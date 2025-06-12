@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The World of L'Isolina — Coming Soon</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto&display=swap" rel="stylesheet">
+
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Playfair Display', serif;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .background-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      z-index: -1;
+      object-fit: cover;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 40px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      max-width: 600px;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #555;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .email-form input[type="email"] {
+      padding: 10px;
+      width: 70%;
+      border: 1px solid #ccc;
+      border-radius: 4px 0 0 4px;
+      outline: none;
+    }
+
+    .email-form button {
+      padding: 10px 20px;
+      background-color: #b22222;
+      color: #fff;
+      border: none;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .email-form button:hover {
+      background-color: #8b1a1a;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Background Video -->
+  <video autoplay muted loop playsinline class="background-video">
+    <source src="YOUR_BACKGROUND_VIDEO_URL_HERE.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Main Content Overlay -->
+  <div class="overlay">
+    <img src="https://cdn.shopify.com/s/files/1/0440/1070/0959/files/Visit_L_Isolina_Poster.svg?v=1749698590" alt="Visit L'Isolina Poster" style="width: 120px; margin-bottom: 20px;">
+
+    <h1>The World of L'Isolina</h1>
+    <p>A land of pasta, flavor, and mystery<br>is soon to be revealed.<br>Be among the first to explore its wonders...</p>
+
+    <!-- Simple Email Form -->
+    <form action="https://YOUR_EMAIL_COLLECTION_URL_HERE" method="POST" target="_blank" class="email-form">
+      <input type="email" name="email" placeholder="Your email address" required>
+      <button type="submit">Notify Me</button>
+    </form>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    37°14’9”N, 15°37’4”E — The Coordinates of L'Isolina
+  </div>
+
+</body>
+</html>
