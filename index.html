@@ -133,13 +133,23 @@
 
   <!-- Script to trigger Coming Soon overlay after video ends -->
   <script>
-    const video = document.getElementById('welcomeVideo');
-    const overlay = document.getElementById('comingSoonOverlay');
+  const video = document.getElementById('welcomeVideo');
+  const overlay = document.getElementById('comingSoonOverlay');
 
+  // Check if video already played
+  if (localStorage.getItem('videoPlayed') === 'true') {
+    // Skip video, show overlay immediately
+    video.style.display = 'none';
+    overlay.classList.add('active');
+  } else {
+    // Play video, show overlay when video ends
     video.addEventListener('ended', () => {
       overlay.classList.add('active');
+      localStorage.setItem('videoPlayed', 'true');
     });
-  </script>
+  }
+</script>
+
 
 </body>
 </html>
