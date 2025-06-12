@@ -15,21 +15,40 @@
       overflow: hidden;
     }
 
+    /* Background Video */
     .background-video {
       position: fixed;
       top: 0;
       left: 0;
       min-width: 100%;
       min-height: 100%;
-      z-index: -1;
+      z-index: 1;
       object-fit: cover;
     }
 
-    .overlay {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+    /* Coming Soon Overlay (hidden initially) */
+    .coming-soon-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('assets/Hotline-page-bg-2.svg') no-repeat center center;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      z-index: 2;
+      transition: opacity 1.5s ease;
+    }
+
+    .coming-soon-overlay.active {
+      opacity: 1;
+    }
+
+    .overlay-content {
       background-color: rgba(255, 255, 255, 0.85);
       padding: 40px;
       border-radius: 12px;
@@ -86,29 +105,41 @@
 <body>
 
   <!-- Background Video -->
-  <video autoplay muted loop playsinline class="background-video">
-<source src="assets/welcome-sequence.mp4" type="video/mp4">
+  <video id="welcomeVideo" autoplay muted playsinline class="background-video">
+    <source src="assets/welcome-sequence.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
 
-  <!-- Main Content Overlay -->
-  <div class="overlay">
-    <img src="https://cdn.shopify.com/s/files/1/0440/1070/0959/files/Visit_L_Isolina_Poster.svg?v=1749698590" alt="Visit L'Isolina Poster" style="width: 120px; margin-bottom: 20px;">
+  <!-- Coming Soon Overlay -->
+  <div class="coming-soon-overlay" id="comingSoonOverlay">
+    <div class="overlay-content">
+      <img src="https://cdn.shopify.com/s/files/1/0440/1070/0959/files/Visit_L_Isolina_Poster.svg?v=1749698590" alt="Visit L'Isolina Poster" style="width: 120px; margin-bottom: 20px;">
 
-    <h1>The World of L'Isolina</h1>
-    <p>A land of pasta, flavor, and mystery<br>is soon to be revealed.<br>Be among the first to explore its wonders...</p>
+      <h1>The World of L'Isolina</h1>
+      <p>A land of pasta, flavor, and mystery<br>is soon to be revealed.<br>Be among the first to explore its wonders...</p>
 
-    <!-- Simple Email Form -->
-    <form action="https://YOUR_EMAIL_COLLECTION_URL_HERE" method="POST" target="_blank" class="email-form">
-      <input type="email" name="email" placeholder="Your email address" required>
-      <button type="submit">Notify Me</button>
-    </form>
+      <!-- Simple Email Form -->
+      <form action="https://YOUR_EMAIL_COLLECTION_URL_HERE" method="POST" target="_blank" class="email-form">
+        <input type="email" name="email" placeholder="Your email address" required>
+        <button type="submit">Notify Me</button>
+      </form>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      37°14’9”N, 15°37’4”E — The Coordinates of L'Isolina
+    </div>
   </div>
 
-  <!-- Footer -->
-  <div class="footer">
-    37°14’9”N, 15°37’4”E — The Coordinates of L'Isolina
-  </div>
+  <!-- Script to trigger Coming Soon overlay after video ends -->
+  <script>
+    const video = document.getElementById('welcomeVideo');
+    const overlay = document.getElementById('comingSoonOverlay');
+
+    video.addEventListener('ended', () => {
+      overlay.classList.add('active');
+    });
+  </script>
 
 </body>
 </html>
